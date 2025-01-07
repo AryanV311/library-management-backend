@@ -2,6 +2,13 @@
 
 A Library Project Management System built using the **MERN stack** (MongoDB, Express.js, React.js, Node.js). This system is designed to efficiently manage library operations such as managing books, authors, users, and borrowing history.
 
+## Features
+- **User Authentication:** Register, login, and role-based access (Admin, Librarian, Member).
+- **Book Management:** Add, update, delete, and search books.
+- **Author Management:** Manage authors linked to books.
+- **Borrowing History:** Track books borrowed by users, including borrow and return dates.
+- **Search and Pagination:** Search books by title or author, with paginated results.
+
 ## Project Structure
 
 ```plaintext
@@ -114,6 +121,31 @@ Ensure you have the following installed on your system:
   }
 }
 ```
+### 1. **Author**  
+- Stores information about authors.  
+- Books reference the `Author` collection.  
+
+### 2. **Book**  
+- Contains details about each book.  
+- Each book references an `Author` and can have multiple borrow records over time.  
+
+### 3. **User**  
+- Stores user information, including roles such as Admin, Librarian, and Member.  
+- Users can borrow books, and their borrowing activity is stored in a separate `BorrowingHistory` collection.  
+
+### 4. **BorrowingHistory**  
+- Tracks the borrowing activities of users, including:  
+  - The book borrowed.  
+  - The user who borrowed it.  
+  - Borrow and return dates.  
+  - Fines, if applicable.  
+
+This design ensures a clear separation of concerns, enabling:  
+- Easy management of relationships between books, authors, and users.  
+- Robust tracking of borrowing activities.  
+- Scalability for future features, such as fine calculations or enhanced borrowing analytics.  
+
+---
 
 ### Design Choices
 - MongoDB was chosen for its flexibility in handling relationships between collections and ease of scalability.
